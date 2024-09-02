@@ -1767,7 +1767,6 @@ html {
   border-radius: 12px;
   border: 2px solid #fff;
   background: var(--yellow-dark-color);
-  rotate: 2deg;
 }
 .prem-banner__wrap {
   gap: 20px;
