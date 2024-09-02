@@ -13,6 +13,8 @@ Route::prefix('v1')->group(function () {
         ->group(function () {
             Route::post('/register', 'register');
             Route::post('/login', 'login');
-            
+            Route::post('/refresh', 'refresh');
+            Route::post('/logout', 'logout')->middleware('jwt.auth');
+            Route::get('/profile', 'profile')->middleware('jwt.auth');
         });
 });

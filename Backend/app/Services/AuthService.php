@@ -10,6 +10,14 @@ class AuthService {
         $this->userRepository = $userRepository;
     }
 
+    public function profile() {
+        try {
+            return auth()->user()->load('role');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
     public function register($request) {
         try {
             $data = $request->validated();
@@ -33,6 +41,21 @@ class AuthService {
         return $this->respondWithToken($token);
     }
 
+    public function refresh()
+    {
+        try {
+            return $this->respondWithToken(auth()->refresh());
+        } catch (\Throwable $th) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+    }
+    public function logout()
+    {
+        auth()->logout(true);
+
+        return response()->json(['message' => 'Successfully logged out']);
+    }
+
     protected function respondWithToken($token)
     {
         return response()->json([
@@ -40,7 +63,7 @@ class AuthService {
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
             'user' => auth()->user()->load('role')
-        ]);
+        ], 200);
     }
 
 }

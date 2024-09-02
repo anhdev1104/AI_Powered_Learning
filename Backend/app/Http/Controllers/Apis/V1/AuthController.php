@@ -29,4 +29,21 @@ class AuthController extends Controller
     public function login(LoginRequest $request) {
         return $this->authService->login($request);
     }
+
+    public function logout() {
+        return $this->authService->logout();
+    }
+
+    public function refresh() {
+        return $this->authService->refresh();
+    }
+
+    public function profile() {
+        try {
+            $data = $this->authService->profile();
+            return response()->json(['data' => $data], 200);
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage()], 400);
+        }
+    }
 }
