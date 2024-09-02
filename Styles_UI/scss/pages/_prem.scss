@@ -1,0 +1,320 @@
+@use "../abstracts";
+
+%flexItemCenter {
+    display: flex;
+    align-items: center;
+}
+
+.prem {
+    padding-top: 42px;
+}
+
+.prem-banner {
+    position: relative;
+    @extend %flexItemCenter;
+    justify-content: space-between;
+    padding: 22px 26px;
+    border-radius: 12px;
+    border: 2px solid #fff;
+    background: var(--yellow-dark-color);
+    rotate: 2deg;
+
+    &__wrap {
+        @extend %flexItemCenter;
+        gap: 20px;
+    }
+
+    &__btn {
+        @extend %flexItemCenter;
+        gap: 5px;
+        padding: 19px 22px;
+        background: #fff;
+        border: 1px solid var(--primary-bg-color);
+        background: #fff;
+        border-radius: 7px;
+        box-shadow: 0px 5.25px 0px 0px var(--primary-bg-color);
+        cursor: pointer;
+    }
+
+    &__btn-text {
+        color: var(--yellow-dark-color);
+    }
+
+    &__delete {
+        position: absolute;
+        right: -10px;
+        top: -10px;
+        cursor: pointer;
+    }
+}
+
+.prem-content {
+    width: 42%;
+    padding: 64px 0 68px;
+
+    @include abstracts.screen(lg) {
+        width: 100%;
+    }
+}
+
+.prem-containers {
+    padding: 96px 0 80px;
+    background: var(--primary-bg-color);
+
+    &__wrap {
+        display: flex;
+        gap: 28px;
+
+        @include abstracts.screen(xl) {
+            flex-direction: column;
+        }
+
+        &--bot {
+            position: relative;
+            @extend %flexItemCenter;
+            margin-top: 50px;
+
+            @include abstracts.screen(lg) {
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+.prem-container {
+    width: 192px;
+
+    @include abstracts.screen(xl) {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 90px;
+        margin-bottom: 12px;
+    }
+
+    &--left {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        background: var(--border-color);
+        border-radius: 12px;
+
+        @include abstracts.screen(lg) {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+    }
+
+    &__nameplate {
+        position: absolute;
+        top: -31px;
+        left: 66%;
+        translate: -64%;
+        padding: 8px 44px;
+        border-radius: 10px 10px 0px 0px;
+        background: var(--yellow--light-color);
+
+        color: var(--text-dark-color);
+        font-size: 1.4rem;
+        font-weight: 700;
+        line-height: 1.07;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+
+        @include abstracts.screen(xl) {
+            padding: 8px 49px;
+        }
+    }
+
+    &__box {
+        width: 192px;
+        height: 125px;
+        flex-shrink: 0;
+
+        @include abstracts.screen(xl) {
+            width: 100%;
+        }
+
+        &--bot {
+            @include abstracts.screen(xl) {
+                width: 192px;
+            }
+
+            @include abstracts.screen(lg) {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+
+    &__box + &__box {
+        margin-top: 56px;
+
+        @include abstracts.screen(xl) {
+            margin-top: 0;
+        }
+    }
+
+    &__title-small {
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.18;
+    }
+
+    &__text {
+        margin-top: 17px;
+        font-size: 1.4rem;
+        line-height: 1.5;
+    }
+
+    &__link {
+        color: var(--text-green);
+        font-size: 14px;
+        line-height: 1.5;
+        text-decoration-line: underline;
+    }
+
+    &__wrap {
+        color: var(--text-dark-color);
+        padding: 24px 32px;
+
+        @include abstracts.screen(lg) {
+            border-bottom: 14px solid var(--primary-bg-color);
+        }
+
+        &:nth-of-type(3) {
+            border-left: 4px solid var(--yellow--light-color);
+            border-right: 4px solid var(--yellow--light-color);
+            border-bottom: 4px solid var(--yellow--light-color);
+
+            @include abstracts.screen(lg) {
+                border-left: none;
+                border-right: none;
+                border-width: 14px;
+                border-color: var(--primary-bg-color);
+            }
+        }
+
+        &:nth-of-type(4) {
+            @include abstracts.screen(lg) {
+                border-bottom: none;
+            }
+        }
+    }
+
+    &__title {
+        margin-top: 20px;
+        line-height: 1.16;
+        color: var(--text-dark-color) !important;
+    }
+
+    &__desc {
+        height: 120px;
+        margin-top: 12px;
+        width: 150px;
+    }
+
+    &__btn {
+        @extend %flexItemCenter;
+        justify-content: center;
+        margin-top: 68px;
+        padding: 17px 29px;
+        border-radius: 8px;
+        border: 2px solid var(--primary-bg-color);
+        background: var(--border-color);
+        box-shadow: 0px 6px 0px 0px var(--primary-bg-color);
+        font-weight: 700;
+        transition: 0.25s ease;
+
+        &:hover {
+            background: #c3c6d1;
+        }
+
+        &--color {
+            transition: 0.25s ease;
+            background: var(--yellow--light-color);
+
+            &:hover {
+                background: var(--yellow-dark-color);
+            }
+        }
+    }
+
+    &__price {
+        margin-top: 23px;
+        font-size: 6rem;
+        font-weight: 700;
+        line-height: 1.12;
+    }
+
+    &__price span {
+        font-size: 3rem;
+    }
+
+    &__boxer {
+        @extend %flexItemCenter;
+        gap: 8px;
+        margin-top: 4px;
+    }
+
+    &__wrap-icon {
+        @include abstracts.screen(lg) {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+    }
+
+    &__icon {
+        @extend %flexItemCenter;
+        flex-direction: column;
+        justify-content: center;
+        gap: 32px;
+
+        position: absolute;
+        top: 23px;
+
+        @include abstracts.screen(lg) {
+            position: initial;
+            top: initial;
+            left: initial;
+        }
+
+        &:nth-child(1) {
+            left: 27%;
+
+            @include abstracts.screen(xl) {
+                left: 23%;
+            }
+        }
+
+        &:nth-child(2) {
+            left: 48%;
+
+            @include abstracts.screen(xl) {
+                left: 41%;
+            }
+        }
+
+        &:nth-child(3) {
+            left: 67%;
+
+            @include abstracts.screen(xl) {
+                left: 61%;
+            }
+        }
+
+        &:nth-child(4) {
+            left: 88%;
+
+            @include abstracts.screen(xl) {
+                left: 86%;
+            }
+        }
+    }
+
+    &__text-small {
+        color: #616d8a;
+        line-height: 1.5;
+    }
+}
