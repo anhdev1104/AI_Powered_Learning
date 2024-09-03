@@ -1,0 +1,14 @@
+<svg className="icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+                <g clipPath="url(#clip0_13_191)">
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M6.86309 20.6705L0.394043 14.2001L6.86309 7.72974L7.80686 8.6735L2.94541 13.5336H27.9965V14.8666H2.94541L7.80686 19.7267L6.86309 20.6692V20.6705Z"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_13_191">
+                    <rect width="27.993" height="26.66" transform="translate(0.00341797 0.870117)" />
+                  </clipPath>
+                </defs>
+              </svg>

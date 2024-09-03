@@ -1,0 +1,61 @@
+<div class="header-container">
+    <a href="/" class="logo">
+        <img src="./assets/img/logo.png" alt="" class="logo__img" />
+        <h1 class="logo__text">Daddy World</h1>
+    </a>
+    <!-- Navigator -->
+    <nav class="navbar">
+        <ul class="navbar__list">
+            <li class="navbar__item d-sm-none">
+                <a href="./premium.html" class="navbar__link">Premium</a>
+            </li>
+            <li class="navbar__item d-lg-none">
+                <a href="#explore" class="navbar__link">Explore</a>
+            </li>
+            <li class="navbar__item d-lg-none">
+                <a href="#feedback" class="navbar__link">Feedback</a>
+            </li>
+            <li class="navbar__item d-lg-none">
+                <a href="#dev" class="navbar__link">Developer</a>
+            </li>
+            <li class="navbar__item d-sm-none">
+                <a href="./login.html" class="navbar__link">Sign in</a>
+            </li>
+        </ul>
+        <!-- Navigator mobile/tablet -->
+        <div class="navbar-mobile d-none d-lg-block">
+            <div class="navbar-mobile__wrap">
+                <button class="js-toggle" toggle-target="#navbar">
+                    <img src="./assets/icon/menu.svg" alt="" />
+                </button>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- Modal: navbar mobile -->
+<div>
+    <div id="navbar" class="mobile hide d-none d-lg-block">
+        <a href="/" class="logo">
+            <img src="./assets/img/logo.png" alt="" class="logo__img" />
+            <h2 class="logo__text">Daddy World</h2>
+        </a>
+        <ul class="navbar__list navbar-mobile__wrap">
+            <li class="navbar__item d-lg-none d-sm-block">
+                <a href="./premium.html" class="navbar__link">Premium</a>
+            </li>
+            <li class="navbar__item">
+                <a href="#explore" class="navbar__link">Explore</a>
+            </li>
+            <li class="navbar__item">
+                <a href="#feedback" class="navbar__link">Feedback</a>
+            </li>
+            <li class="navbar__item">
+                <a href="#dev" class="navbar__link">Developer</a>
+            </li>
+            <li class="navbar__item d-lg-none d-sm-block">
+                <a href="./login.html" class="navbar__link">Sign in</a>
+            </li>
+        </ul>
+    </div>
+    <div class="mobile__overlay js-toggle" toggle-target="#navbar"></div>
+</div>
