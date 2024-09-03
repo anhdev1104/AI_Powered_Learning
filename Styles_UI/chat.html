@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="vn">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Favicon -->
+        <link
+            rel="apple-touch-icon"
+            sizes="57x57"
+            href="./assets/favicon/apple-icon-57x57.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="60x60"
+            href="./assets/favicon/apple-icon-60x60.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="72x72"
+            href="./assets/favicon/apple-icon-72x72.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="./assets/favicon/apple-icon-76x76.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="114x114"
+            href="./assets/favicon/apple-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="./assets/favicon/apple-icon-120x120.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="144x144"
+            href="./assets/favicon/apple-icon-144x144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="./assets/favicon/apple-icon-152x152.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/favicon/apple-icon-180x180.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="./assets/favicon/android-icon-192x192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="./assets/favicon/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./assets/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./assets/favicon/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta
+            name="msapplication-TileImage"
+            content="./assets/favicon/ms-icon-144x144.png"
+        />
+        <meta name="theme-color" content="#ffffff" />
+        <!-- Embed fonts -->
+        <link rel="stylesheet" href="./assets/font/stylesheet.css" />
+
+        <!-- Script -->
+        <script src="./assets/js/load.js"></script>
+        <!-- Styles -->
+        <link rel="stylesheet" href="./assets/css/main.css" />
+        <title>Daddy Education | Premium</title>
+    </head>
+    <body>
+        <!-- Header -->
+        <header id="header" class="header"></header>
+        <script>
+            load("#header", "./templates/header-login.html");
+        </script>
+
+        <!-- Main -->
+        <main class="chat">
+            <div class="row">
+                <article class="col-3 d-md-none">
+                    <div class="chat__container">
+                        <article class="chat-info">
+                            <img
+                                src="./assets/img/feedback/avt1.jpg"
+                                alt=""
+                                class="chat-info__avatar"
+                            />
+                            <h2 class="chat-info__name">Hoàng Bảo Trung</h2>
+                            <p class="chat-info__mail">
+                                trunghbpd07238@fpt.edu.vn
+                            </p>
+                        </article>
+
+                        <article id="chat-block" class="chat-block">
+                            <!-- Chat Item 1 -->
+                            <div class="chat-block__item">
+                                <p class="chat-block__date">Today</p>
+                                <h3 class="chat-block__title">
+                                    Làm thế nào để tăng tư duy thuật toán
+                                </h3>
+                            </div>
+
+                            <!-- Chat Item 2 -->
+                            <div class="chat-block__item">
+                                <p class="chat-block__date">Tomorrow</p>
+                                <h3 class="chat-block__title">
+                                    Lập trình hướng đối tượng là gì
+                                </h3>
+                            </div>
+                        </article>
+                    </div>
+                </article>
+
+                <article class="col-9 col-md-12">
+                    <div class="chat-box">
+                        <div id="chat-box__message" class="chat-box__message">
+                            <div id="chat" class="chat-message">
+                                <p id="messageUser" class="chat-message__text">
+                                    xin chào
+                                </p>
+
+                                <div
+                                    id="messageAI"
+                                    class="chat-message__text chat-message__text--AI messageAI"
+                                >
+                                    Yes i am happy to help you
+
+                                    <div class="chat-message__icons">
+                                        <button
+                                            class="chat-message__icon"
+                                            onclick="speakText()"
+                                            id="toSpeach"
+                                            type="button"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 640 512"
+                                            >
+                                                <path
+                                                    fill="#e7f3e2"
+                                                    d="M533.6 32.5C598.5 85.2 640 165.8 640 256s-41.5 170.7-106.4 223.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C557.5 398.2 592 331.2 592 256s-34.5-142.2-88.7-186.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM473.1 107c43.2 35.2 70.9 88.9 70.9 149s-27.7 113.8-70.9 149c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C475.3 341.3 496 301.1 496 256s-20.7-85.3-53.2-111.8c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zm-60.5 74.5C434.1 199.1 448 225.9 448 256s-13.9 56.9-35.4 74.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C393.1 284.4 400 271 400 256s-6.9-28.4-17.7-37.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM301.1 34.8C312.6 40 320 51.4 320 64l0 384c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352 64 352c-35.3 0-64-28.7-64-64l0-64c0-35.3 28.7-64 64-64l67.8 0L266.7 40.1c9.4-8.4 22.9-10.4 34.4-5.3z"
+                                                />
+                                            </svg>
+                                        </button>
+
+                                        <button
+                                            class="chat-message__icon"
+                                            onclick="like()"
+                                            type="button"
+                                        >
+                                            <svg
+                                                class="like"
+                                                fill="#e7f3e2"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 512 512"
+                                            >
+                                                <path
+                                                    d="M313.4 32.9c26 5.2 42.9 30.5 37.7 56.5l-2.3 11.4c-5.3 26.7-15.1 52.1-28.8 75.2l144 0c26.5 0 48 21.5 48 48c0 18.5-10.5 34.6-25.9 42.6C497 275.4 504 288.9 504 304c0 23.4-16.8 42.9-38.9 47.1c4.4 7.3 6.9 15.8 6.9 24.9c0 21.3-13.9 39.4-33.1 45.6c.7 3.3 1.1 6.8 1.1 10.4c0 26.5-21.5 48-48 48l-97.5 0c-19 0-37.5-5.6-53.3-16.1l-38.5-25.7C176 420.4 160 390.4 160 358.3l0-38.3 0-48 0-24.9c0-29.2 13.3-56.7 36-75l7.4-5.9c26.5-21.2 44.6-51 51.2-84.2l2.3-11.4c5.2-26 30.5-42.9 56.5-37.7zM32 192l64 0c17.7 0 32 14.3 32 32l0 224c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32L0 224c0-17.7 14.3-32 32-32z"
+                                                />
+                                            </svg>
+                                        </button>
+
+                                        <button
+                                            class="chat-message__icon"
+                                            onclick="unLike()"
+                                            type="button"
+                                        >
+                                            <svg
+                                                class="unLike"
+                                                fill="#e7f3e2"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 512 512"
+                                            >
+                                                <path
+                                                    d="M313.4 479.1c26-5.2 42.9-30.5 37.7-56.5l-2.3-11.4c-5.3-26.7-15.1-52.1-28.8-75.2l144 0c26.5 0 48-21.5 48-48c0-18.5-10.5-34.6-25.9-42.6C497 236.6 504 223.1 504 208c0-23.4-16.8-42.9-38.9-47.1c4.4-7.3 6.9-15.8 6.9-24.9c0-21.3-13.9-39.4-33.1-45.6c.7-3.3 1.1-6.8 1.1-10.4c0-26.5-21.5-48-48-48l-97.5 0c-19 0-37.5 5.6-53.3 16.1L202.7 73.8C176 91.6 160 121.6 160 153.7l0 38.3 0 48 0 24.9c0 29.2 13.3 56.7 36 75l7.4 5.9c26.5 21.2 44.6 51 51.2 84.2l2.3 11.4c5.2 26 30.5 42.9 56.5 37.7zM32 384l64 0c17.7 0 32-14.3 32-32l0-224c0-17.7-14.3-32-32-32L32 96C14.3 96 0 110.3 0 128L0 352c0 17.7 14.3 32 32 32z"
+                                                />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="chat-box__wrap" class="chat-box__wrap">
+                                <img
+                                    src="./assets/img/logo.png"
+                                    alt=""
+                                    class="chat-box__logo"
+                                />
+                            </div>
+
+                            <form action="" class="chat-box__form">
+                                <input
+                                    class="chat-box__input"
+                                    type="text"
+                                    name=""
+                                    id="inputMessage"
+                                    placeholder="Aa"
+                                />
+
+                                <div class="chat-box__icons">
+                                    <img
+                                        id="pushImage"
+                                        src="./assets/icon/image.svg"
+                                        alt=""
+                                        class="chat-box__icon"
+                                    />
+                                    <img
+                                        id="mic"
+                                        src="./assets/icon/mic.svg"
+                                        alt=""
+                                        class="chat-box__icon"
+                                    />
+                                    <button type="button">
+                                        <img
+                                            id="send"
+                                            src="./assets/icon/send.svg"
+                                            alt=""
+                                            class="chat-box__icon"
+                                        />
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </main>
+        <script src="./assets/js/chat.js"></script>
+        <script src="./assets/js/main.js"></script>
+    </body>
+</html>
