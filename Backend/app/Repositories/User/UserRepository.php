@@ -8,6 +8,7 @@ use App\Repositories\User\UserRepositoryInterface;
 class UserRepository implements UserRepositoryInterface {
     public function all() {
         $users = User::all();
+        return $users;  
     }
 
     public function paginate($limit) {
