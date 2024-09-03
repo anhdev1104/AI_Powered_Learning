@@ -149,6 +149,29 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: var(--thirst-bg-color);
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  border: 1px solid var(--thirst-bg-color);
+  background-color: var(--thirst-bg-color);
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: rgb(198, 169, 5);
+  background: linear-gradient(180deg, rgba(198, 169, 5, 0.9585084034) 31%, rgb(255, 212, 59) 83%);
+}
+
 body {
   font-size: 1.6rem;
   font-family: "PP Object Sans", sans-serif;
@@ -1424,14 +1447,25 @@ html {
   border: 1px solid var(--border-color);
 }
 .navbar__item:hover:first-child {
-  border-color: #ffd700;
+  border-color: var(--yellow--light-color);
+}
+.navbar__item:hover:last-child {
+  border: none;
 }
 .navbar__item:hover:first-child .navbar__link {
-  color: #ffd700;
+  color: var(--yellow--light-color);
 }
 .navbar__link {
   color: var(--text-white-color);
   line-height: 1.4;
+}
+.navbar__avt {
+  width: 52px;
+  border-radius: 12px;
+  border: 3px solid var(--text-green);
+}
+.navbar__icon {
+  width: 22px;
 }
 
 .navbar-mobile__wrap {
@@ -2051,7 +2085,7 @@ html {
   line-height: 1.5;
 }
 
-.chat-box__box, .chat-box__icons, .chat-box__wrap, .chat-info, .chat__container {
+.chat-message__icons, .chat-box__box, .chat-box__icons, .chat-box__wrap, .chat-block, .chat-info, .chat__container {
   display: flex;
   align-items: center;
 }
@@ -2089,14 +2123,12 @@ html {
 
 .chat-block {
   width: 100%;
-  display: flex;
-  align-items: center;
   flex-direction: column;
   margin-top: 36px;
   overflow-y: auto;
 }
 .chat-block__item {
-  width: 80%;
+  width: 90%;
   padding: 15px 10px;
   border: 1px solid var(--text-green);
   border-radius: 20px;
@@ -2104,14 +2136,13 @@ html {
 .chat-block__item + .chat-block__item {
   margin-top: 12px;
 }
+.chat-block__date {
+  font-weight: 600;
+  line-height: 1.21;
+}
 .chat-block__title {
   margin-top: 12px;
   font-size: 1.4rem;
-  font-style: italic;
-}
-.chat-block__date {
-  font-weight: 500;
-  line-height: 1.21;
 }
 
 .chat-box {
@@ -2153,6 +2184,7 @@ html {
   padding: 5px 110px 5px 15px;
   border: 1px solid var(--border-color);
   border-radius: 12px;
+  word-wrap: break-word;
   font-size: 1.8rem;
   color: var(--text-white-color);
 }
@@ -2182,24 +2214,6 @@ html {
   height: 16px;
   cursor: pointer;
 }
-.chat-box__out {
-  display: none;
-  position: fixed;
-  top: 120px;
-  left: 450px;
-  margin: 15px;
-}
-.chat-box__icon-out {
-  width: 26px;
-  height: 26px;
-  rotate: 180deg;
-}
-.chat-box__container.hide {
-  display: none;
-}
-.chat-box__container.show {
-  display: block;
-}
 .chat-box__container {
   margin-left: 85px;
 }
@@ -2208,36 +2222,31 @@ html {
 }
 .chat-box__title {
   font-size: 2.1rem;
-  color: #fff;
+  color: var(--text-white-color);
   text-align: center;
 }
 .chat-box__time {
   margin-top: 28px;
-  color: #fff;
+  color: var(--text-white-color);
 }
 .chat-box__box {
   justify-content: space-between;
 }
 .chat-box__location {
   margin-top: 16px;
-  color: #fff;
-}
-.chat-box__btn {
-  padding: 5px 15px;
-  border-radius: 5px;
-  color: rgba(65, 87, 255, 0.6509803922);
-  background: #fff;
+  color: var(--text-white-color);
 }
 
 .chat-message {
   overflow: auto;
+  height: 450px;
 }
 .chat-message__text {
   max-width: 50%;
   position: relative;
   clear: both;
   float: right;
-  margin: 8px 0;
+  margin: 16px 0;
   padding: 6px 10px 7px;
   background: var(--text-green);
   font-size: 1.6rem;
@@ -2246,6 +2255,7 @@ html {
   border-radius: 10px 10px 0 10px;
   line-height: 1.21;
   z-index: 1;
+  word-wrap: break-word;
 }
 .chat-message__text::before {
   content: "";
@@ -2262,6 +2272,31 @@ html {
   animation-name: delay1;
   animation-iteration-count: unset;
   animation-delay: 3s;
+}
+.chat-message__icons {
+  position: absolute;
+  bottom: -25px;
+  right: 10px;
+  gap: 10px;
+}
+.chat-message__icon {
+  width: 16px;
+}
+
+.chat-message::-webkit-scrollbar {
+  width: 5px;
+  background-color: var(--thirst-bg-color);
+}
+
+.chat-message::-webkit-scrollbar-track {
+  border: 1px solid var(--thirst-bg-color);
+  background-color: var(--thirst-bg-color);
+}
+
+.chat-message::-webkit-scrollbar-thumb {
+  background: rgb(198, 169, 5);
+  background: linear-gradient(180deg, rgba(198, 169, 5, 0.9585084034) 31%, rgb(255, 212, 59) 83%);
+  border-radius: 99px;
 }
 
 .profile {
@@ -2387,6 +2422,61 @@ html {
   padding: 5px 10px;
   background: var(--yellow-dark-color);
   border-radius: 5px;
+}
+
+.explore {
+  margin: 62px 0 78px;
+}
+@media (max-width: 991.98px) {
+  .explore {
+    margin: 42px 58px;
+  }
+}
+
+.explore-container__list {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 28px;
+}
+@media (max-width: 991.98px) {
+  .explore-container__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 575.98px) {
+  .explore-container__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.explore-container + .explore-container {
+  margin-top: 72px;
+}
+
+.explore-item {
+  background: var(--thirst-bg-color);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.explore-item__thumb {
+  width: 100%;
+  height: 177px;
+  object-fit: cover;
+}
+.explore-item__content {
+  padding: 16px 20px;
+}
+.explore-item__title {
+  font-size: 1.8rem !important;
+}
+.explore-item__desc {
+  font-size: 1.6rem !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .section-heading {
@@ -3018,7 +3108,7 @@ html {
   text-transform: uppercase;
 }
 .feedback-container__desc {
-  white-space: wrap;
+  word-wrap: break-word;
   margin-top: 42px;
   line-height: 1.4;
   display: -webkit-box;
@@ -3194,6 +3284,9 @@ html {
 }
 @media (max-width: 767.98px) {
   .auth__content {
+    background: var(--primary-bg-color);
+    background-image: url(../../assets/img/bg.png);
+    background-repeat: repeat;
     position: fixed;
     inset: 0;
     z-index: 1;

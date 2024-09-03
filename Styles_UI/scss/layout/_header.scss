@@ -58,17 +58,31 @@
         }
 
         &:hover:first-child {
-            border-color: #ffd700;
+            border-color: var(--yellow--light-color);
         }
     }
 
+    &__item:hover:last-child {
+        border: none;
+    }
+
     &__item:hover:first-child &__link {
-        color: #ffd700;
+        color: var(--yellow--light-color);
     }
 
     &__link {
         color: var(--text-white-color);
         line-height: 1.4;
+    }
+
+    &__avt {
+        width: 52px;
+        border-radius: 12px;
+        border: 3px solid var(--text-green);
+    }
+
+    &__icon {
+        width: 22px;
     }
 }
 
