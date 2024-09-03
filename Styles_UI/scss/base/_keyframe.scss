@@ -22,3 +22,13 @@
         translate: -5px;
     }
 }
+
+@keyframes delay1 {
+    from {
+        display: none;
+    }
+
+    to {
+        display: block;
+    }
+}

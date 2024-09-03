@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Favicon -->
+        <link
+            rel="apple-touch-icon"
+            sizes="57x57"
+            href="./assets/favicon/apple-icon-57x57.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="60x60"
+            href="./assets/favicon/apple-icon-60x60.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="72x72"
+            href="./assets/favicon/apple-icon-72x72.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="./assets/favicon/apple-icon-76x76.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="114x114"
+            href="./assets/favicon/apple-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="./assets/favicon/apple-icon-120x120.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="144x144"
+            href="./assets/favicon/apple-icon-144x144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="./assets/favicon/apple-icon-152x152.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/favicon/apple-icon-180x180.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="./assets/favicon/android-icon-192x192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="./assets/favicon/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./assets/favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="./assets/favicon/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta
+            name="msapplication-TileImage"
+            content="./assets/favicon/ms-icon-144x144.png"
+        />
+        <meta name="theme-color" content="#ffffff" />
+        <!-- Embed fonts -->
+        <link rel="stylesheet" href="./assets/font/stylesheet.css" />
+
+        <!-- Script -->
+        <script src="./assets/js/load.js"></script>
+        <!-- Styles -->
+        <link rel="stylesheet" href="./assets/css/main.css" />
+        <title>Daddy Education | Premium</title>
+    </head>
+    <body>
+        <!-- Header -->
+        <header id="header" class="header"></header>
+        <script>
+            load("#header", "./templates/header-login.html");
+        </script>
+
+        <!-- Main -->
+        <main class="chat">
+            <div class="row">
+                <article class="col-3 d-md-none">
+                    <div class="chat__container">
+                        <article class="chat-info">
+                            <img
+                                src="./assets/img/feedback/avt1.jpg"
+                                alt=""
+                                class="chat-info__avatar"
+                            />
+                            <h2 class="chat-info__name">Hoàng Bảo Trung</h2>
+                            <p class="chat-info__mail">
+                                trunghbpd07238@fpt.edu.vn
+                            </p>
+                        </article>
+
+                        <article id="chat-block" class="chat-block">
+                            <!-- Chat Item 1 -->
+                            <div class="chat-block__item">
+                                <p class="chat-block__date">Today</p>
+                                <h3 class="chat-block__title">
+                                    Làm thế nào để tăng tư duy thuật toán
+                                </h3>
+                            </div>
+
+                            <!-- Chat Item 2 -->
+                            <div class="chat-block__item">
+                                <p class="chat-block__date">Tomorrow</p>
+                                <h3 class="chat-block__title">
+                                    Lập trình hướng đối tượng là gì
+                                </h3>
+                            </div>
+                        </article>
+                    </div>
+                </article>
+
+                <article class="col-9 col-md-12">
+                    <div class="chat-box">
+                        <div class="chat-box__message">
+                            <div id="chat" class="chat-message">
+                                <p class="chat-message__text">xin chào</p>
+
+                                <p
+                                    class="chat-message__text chat-message__text--AI"
+                                >
+                                    vâng chúng tôi rất vui có thể giúp bạn
+                                </p>
+                            </div>
+
+                            <div class="chat-box__wrap">
+                                <img
+                                    src="./assets/img/logo.png"
+                                    alt=""
+                                    class="chat-box__logo"
+                                />
+                            </div>
+
+                            <form action="" class="chat-box__form">
+                                <input
+                                    class="chat-box__input"
+                                    type="text"
+                                    name=""
+                                    id="inputMessage"
+                                    placeholder="Aa"
+                                />
+
+                                <div class="chat-box__icons">
+                                    <img
+                                        id="pushImage"
+                                        src="./assets/icon/image.svg"
+                                        alt=""
+                                        class="chat-box__icon"
+                                    />
+                                    <img
+                                        id="mic"
+                                        src="./assets/icon/mic.svg"
+                                        alt=""
+                                        class="chat-box__icon"
+                                    />
+                                    <button type="button">
+                                        <img
+                                            id="send"
+                                            src="./assets/icon/send.svg"
+                                            alt=""
+                                            class="chat-box__icon"
+                                        />
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </main>
+        <script src="./assets/js/main.js"></script>
+    </body>
+</html>

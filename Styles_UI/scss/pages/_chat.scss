@@ -1,0 +1,247 @@
+@use "../abstracts";
+
+%flexItemCenter {
+    display: flex;
+    align-items: center;
+}
+
+.chat {
+    height: 80vh;
+
+    &__container {
+        height: 86vh;
+        @extend %flexItemCenter;
+        flex-direction: column;
+        border-right: 1px solid var(--border-color);
+    }
+}
+
+.chat-info {
+    @extend %flexItemCenter;
+    flex-direction: column;
+    &__avatar {
+        width: 68px;
+        height: 68px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid var(--text-green);
+    }
+
+    &__name {
+        margin-top: 12px;
+        font-size: 2.2rem;
+        font-weight: 600;
+        line-height: 1.21;
+    }
+
+    &__mail {
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: 1.71;
+    }
+}
+
+.chat-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 36px;
+    overflow-y: auto;
+
+    &__item {
+        width: 80%;
+        padding: 15px 10px;
+        border: 1px solid var(--text-green);
+        border-radius: 20px;
+    }
+
+    &__item + &__item {
+        margin-top: 12px;
+    }
+
+    &__title {
+        margin-top: 12px;
+        font-size: 1.4rem;
+        font-style: italic;
+    }
+
+    &__date {
+        font-weight: 500;
+        line-height: 1.21;
+    }
+}
+
+.chat-box {
+    width: 100%;
+    height: 86vh;
+    padding: 35px;
+    position: relative;
+    background: var(--thirst-bg-color);
+    overflow: auto;
+
+    &__wrap {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        translate: -50% -30%;
+        @extend %flexItemCenter;
+    }
+
+    &__logo {
+        width: 60%;
+        object-fit: cover;
+        opacity: 0.5;
+
+        @include abstracts.screen(sm) {
+            width: 100%;
+        }
+    }
+
+    &__text {
+        line-height: 1.21;
+    }
+
+    &__form {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        translate: -50%;
+    }
+
+    &__input {
+        width: 680px;
+        height: 42px;
+        padding: 5px 110px 5px 15px;
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+
+        font-size: 1.8rem;
+        color: var(--text-white-color);
+
+        &::placeholder {
+            font-size: 1.8rem;
+            color: var(--text-white-color);
+        }
+
+        @include abstracts.screen(lg) {
+            width: 497px;
+        }
+
+        @include abstracts.screen(sm) {
+            width: 306px;
+        }
+    }
+
+    &__icons {
+        position: absolute;
+        bottom: 12px;
+        right: 10px;
+        @extend %flexItemCenter;
+        gap: 12px;
+        padding-right: 8px;
+    }
+
+    &__icon {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+    }
+
+    &__out {
+        display: none;
+        position: fixed;
+        top: 120px;
+        left: 450px;
+        margin: 15px;
+    }
+
+    &__icon-out {
+        width: 26px;
+        height: 26px;
+        rotate: 180deg;
+    }
+
+    &__container.hide {
+        display: none;
+    }
+
+    &__container.show {
+        display: block;
+    }
+
+    &__container {
+        margin-left: 85px;
+    }
+
+    &__text + &__text {
+        margin-top: 18px;
+    }
+
+    &__title {
+        font-size: 2.1rem;
+        color: #fff;
+        text-align: center;
+    }
+
+    &__time {
+        margin-top: 28px;
+        color: #fff;
+    }
+
+    &__box {
+        @extend %flexItemCenter;
+        justify-content: space-between;
+    }
+
+    &__location {
+        margin-top: 16px;
+        color: #fff;
+    }
+
+    &__btn {
+        padding: 5px 15px;
+        border-radius: 5px;
+        color: #4157ffa6;
+        background: #fff;
+    }
+}
+
+.chat-message {
+    overflow: auto;
+
+    &__text {
+        max-width: 50%;
+        position: relative;
+        clear: both;
+        float: right;
+        margin: 8px 0;
+        padding: 6px 10px 7px;
+        background: var(--text-green);
+        font-size: 1.6rem;
+        font-weight: 400;
+        color: #fff;
+        border-radius: 10px 10px 0 10px;
+        line-height: 1.21;
+        z-index: 1;
+
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            border-top: 6px solid rgba(0, 0, 0, 0.3);
+        }
+
+        &--AI {
+            float: left;
+            border-radius: 10px 10px 10px 0;
+
+            &:nth-child(2) {
+                animation-name: delay1;
+                animation-iteration-count: unset;
+                animation-delay: 3s;
+            }
+        }
+    }
+}
