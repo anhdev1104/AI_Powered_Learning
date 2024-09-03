@@ -59,6 +59,9 @@
 
     &__content {
         @include abstracts.screen(md) {
+            background: var(--primary-bg-color);
+            background-image: url(../../assets/img/bg.png);
+            background-repeat: repeat;
             position: fixed;
             inset: 0;
             z-index: 1;

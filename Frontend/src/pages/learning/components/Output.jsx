@@ -8,6 +8,7 @@ const Output = ({ editorRef, selectedLanguage }) => {
     if (!sourceCode) return;
     try {
       const { run } = await executeCode(selectedLanguage, sourceCode);
+
       run && setOutput(run.output);
     } catch (error) {
       console.log(error);
