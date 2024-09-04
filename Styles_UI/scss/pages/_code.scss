@@ -60,6 +60,47 @@
         display: block;
         width: 12px;
     }
+
+    &__content {
+        margin-top: 38px;
+        overflow: auto;
+        height: 400px;
+    }
+
+    &__title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+
+    &__sub-title {
+        font-weight: 600;
+        margin: 8px 0;
+    }
+
+    &__desc {
+        line-height: 1.4;
+    }
+}
+
+.code-container__content::-webkit-scrollbar {
+    width: 5px;
+    background-color: var(--thirst-bg-color);
+}
+
+.code-container__content::-webkit-scrollbar-track {
+    border: 1px solid var(--thirst-bg-color);
+    background-color: var(--thirst-bg-color);
+}
+
+.code-container__content::-webkit-scrollbar-thumb {
+    background: rgb(198, 169, 5);
+    background: linear-gradient(
+        180deg,
+        rgba(198, 169, 5, 0.9585084033613446) 31%,
+        rgba(255, 212, 59, 1) 83%
+    );
+    border-radius: 99px;
 }
 
 .code-chat {
