@@ -11,7 +11,7 @@ class ExerciseExample extends Model
 
     protected $table = 'exercise_examples';
 
-    protected $filable = [
+    protected $fillable = [
         'input',
         'output',
         'description',

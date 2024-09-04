@@ -11,7 +11,7 @@ class ExerciseResult extends Model
 
     protected $table = 'exercise_results';
 
-    protected $filable = [
+    protected $fillable = [
         'status',
         'memory_used',
         'solution_id'

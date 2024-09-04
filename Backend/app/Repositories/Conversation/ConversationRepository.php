@@ -12,7 +12,8 @@ class ConversationRepository implements ConversationRepositoryInterface {
         return Conversation::find($id);
     }
     public function paginate($limit) {
-        return $limit ? Conversation::paginate($limit) : Conversation::all();
+        $conversation = Conversation::with('messages');
+        return $limit ? $conversation->paginate($limit) : $conversation->get();
     }
     public function create(array $data) {
         return Conversation::create($data);

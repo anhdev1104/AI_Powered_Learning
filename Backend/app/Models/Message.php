@@ -11,7 +11,7 @@ class Message extends Model
 
     protected $table = 'messages';
 
-    protected $filable = [
+    protected $fillable = [
         'conversation_id',
         'sender_type',
         'message_text'

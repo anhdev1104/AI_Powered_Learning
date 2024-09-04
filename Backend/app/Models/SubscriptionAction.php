@@ -11,7 +11,7 @@ class SubscriptionAction extends Model
 
     protected $table = 'subscription_actions';
 
-    protected $filable = [
+    protected $fillable = [
         'name',
         'description',
         'subscription_id',

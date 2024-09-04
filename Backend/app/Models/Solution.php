@@ -11,7 +11,7 @@ class Solution extends Model
 
     protected $table = 'solutions';
 
-    protected $filable = [
+    protected $fillable = [
         'code',
         'language',
         'exercise_id',

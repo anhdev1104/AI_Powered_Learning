@@ -10,8 +10,12 @@ class Conversation extends Model
 
     protected $table = 'conversations';
 
-    protected $filable = [
+    protected $fillable = [
         'user_id',
         'title'
     ];
+
+    public function messages() {
+        return $this->hasMany(Message::class, 'conversation_id');
+    }
 }

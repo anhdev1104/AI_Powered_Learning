@@ -11,7 +11,7 @@ class Subscription extends Model
 
     protected $table = 'subscriptions';
 
-    protected $filable = [
+    protected $fillable = [
         'name',
         'description',
         'price',

@@ -22,6 +22,7 @@ class ChatAlRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
+            'id' => 'nullable',
             'user_id' => 'required|exists:users,id',
             'prompt' => 'required|string',
         ];

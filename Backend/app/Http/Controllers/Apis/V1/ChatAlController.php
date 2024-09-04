@@ -17,10 +17,16 @@ class ChatAlController extends Controller
         try {
             $data = $request->validated();
 
+            $id = null;
+
+            if (isset($data['id'])) {
+                $id = $data['id'];
+            }
+            
             $user_id = $data['user_id'];
             $prompt = $data['prompt'];
 
-            $res = $this->geminiAlService->generateText($prompt);
+            $res = $this->geminiAlService->generateText($prompt, $user_id, $id);
 
             return response()->json(['data' => $res, 'user_id' => $user_id], 200);
         } catch (\Throwable $th) {
