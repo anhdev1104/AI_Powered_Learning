@@ -28,4 +28,21 @@ class ConversationService {
             throw $th;
         }
     }
+
+    public function findById($id) {
+        try {
+            $conversation = $this->conversationRepository->find($id);
+            return $conversation;
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function delete($id) {
+        try {
+            return $this->conversationRepository->delete($id);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }

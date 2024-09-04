@@ -22,7 +22,7 @@ class ChatAlController extends Controller
             if (isset($data['id'])) {
                 $id = $data['id'];
             }
-            
+
             $user_id = $data['user_id'];
             $prompt = $data['prompt'];
 

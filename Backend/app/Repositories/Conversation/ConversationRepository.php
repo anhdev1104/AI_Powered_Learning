@@ -9,7 +9,7 @@ class ConversationRepository implements ConversationRepositoryInterface {
         return Conversation::all();
     }
     public function find($id) {
-        return Conversation::find($id);
+        return Conversation::with('messages')->find($id);
     }
     public function paginate($limit) {
         $conversation = Conversation::with('messages');

@@ -27,5 +27,7 @@ Route::prefix('v1')->group(function () {
     Route::controller(ConversationController::class)->prefix('conversations')
         ->group(function () {
             Route::get('/', 'paginate');
+            Route::get('/{id}', 'show');
+            Route::delete('/{id}', 'delete');
         });
 });

@@ -21,4 +21,25 @@ class ConversationController extends Controller
             return response()->json(['error' => $th->getMessage()], 400);
         }
     }
+
+    public function show($id) {
+        try {
+            $conversation = $this->conversationService->findById($id);
+            if (empty($conversation)) {
+                return response()->json(['error' => 'Conversation not found!'], 404);
+            }
+            return response()->json(['data' => $conversation], 200);
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage()], 400);
+        }
+    }
+
+    public function delete($id) {
+        try {
+            $this->conversationService->delete($id);
+            return response()->json(['message' => 'Deleted Conversation successfully'], 203);
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage()], 400);
+        }
+    }
 }
