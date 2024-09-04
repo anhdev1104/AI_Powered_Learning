@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ExerciseResults extends Model
+class SubscriptionAction extends Model
 {
     use HasFactory;
 
-    protected $table = 'exercise_results';
+    protected $table = 'subscription_actions';
 
     protected $filable = [
-        'status',
-        'memory_used',
-        'solution_id'
+        'name',
+        'description',
+        'subscription_id',
     ];
 }

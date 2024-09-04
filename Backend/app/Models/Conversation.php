@@ -1,19 +1,17 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SubscriptionActions extends Model
+class Conversation extends Model
 {
     use HasFactory;
 
-    protected $table = 'subscription_actions';
+    protected $table = 'conversations';
 
     protected $filable = [
-        'name',
-        'description',
-        'subscription_id',
+        'user_id',
+        'title'
     ];
 }

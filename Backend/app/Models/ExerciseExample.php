@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Solutions extends Model
+class ExerciseExample extends Model
 {
     use HasFactory;
 
-    protected $table = 'solutions';
+    protected $table = 'exercise_examples';
 
     protected $filable = [
-        'code',
-        'language',
-        'exercise_id',
-        'user_id'
+        'input',
+        'output',
+        'description',
+        'exercise_id'
     ];
-    
 }
