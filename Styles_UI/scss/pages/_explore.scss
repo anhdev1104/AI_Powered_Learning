@@ -163,6 +163,10 @@
         @extend %flexItemCenter;
         justify-content: space-between;
 
+        &:last-child {
+            border-radius: 0 0 12px 12px;
+        }
+
         &:hover {
             background: #49484875;
         }
