@@ -9,7 +9,7 @@
     margin: 62px 0 78px;
 
     @include abstracts.screen(lg) {
-        margin: 42px 58px;
+        margin: 42px 0 58px;
     }
 }
 
@@ -61,4 +61,131 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
+}
+
+.explore-container + .explore-container {
+    margin-top: 56px;
+}
+
+.explore-content {
+    display: flex;
+    justify-content: space-between;
+
+    @include abstracts.screen(lg) {
+        flex-direction: column-reverse;
+        gap: 26px;
+    }
+
+    &__desc {
+        width: 50%;
+
+        @include abstracts.screen(lg) {
+            width: 100%;
+        }
+    }
+
+    &__img {
+        width: 30%;
+        border-radius: 10px;
+
+        @include abstracts.screen(lg) {
+            width: 100%;
+        }
+    }
+}
+
+.explore-wrap {
+    &__title {
+        font-size: 2rem !important;
+    }
+
+    &__list {
+        margin-top: 26px;
+    }
+
+    &__item {
+        @extend %flexItemCenter;
+        gap: 10px;
+    }
+
+    &__item + &__item {
+        margin-top: 12px;
+
+        @include abstracts.screen(lg) {
+            margin-top: 22px;
+        }
+    }
+}
+
+.explore-exercise {
+    &__content {
+        @extend %flexItemCenter;
+        justify-content: space-between;
+        padding: 14px 30px 14px 48px;
+        background: var(--thirst-bg-color);
+        border-radius: 12px 12px 0 0;
+
+        @include abstracts.screen(lg) {
+            padding: 14px 28px;
+        }
+    }
+
+    &__box {
+        @extend %flexItemCenter;
+        gap: 12px;
+    }
+
+    &__icon {
+        width: 22px;
+
+        @include abstracts.screen(md) {
+            width: 16px;
+        }
+    }
+
+    &__title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        line-height: 1.4;
+
+        @include abstracts.screen(md) {
+            font-size: 1.6rem;
+        }
+    }
+
+    &__desc {
+        font-size: 1.4rem;
+        line-height: 1.4;
+    }
+
+    &__item {
+        padding: 14px 30px;
+        @extend %flexItemCenter;
+        justify-content: space-between;
+
+        &:hover {
+            background: #49484875;
+        }
+    }
+
+    &__link {
+        width: 100%;
+        font-size: 1.4rem;
+        line-height: 1.5;
+    }
+
+    &__check {
+        width: 22px;
+    }
+
+    &__un-check {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        border: 2px solid #0ca678;
+    }
+}
+
+.explore-exercise + .explore-exercise {
+    margin-top: 32px;
 }

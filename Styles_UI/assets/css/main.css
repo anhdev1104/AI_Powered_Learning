@@ -2424,12 +2424,17 @@ html {
   border-radius: 5px;
 }
 
+.explore-exercise__item, .explore-exercise__box, .explore-exercise__content, .explore-wrap__item {
+  display: flex;
+  align-items: center;
+}
+
 .explore {
   margin: 62px 0 78px;
 }
 @media (max-width: 991.98px) {
   .explore {
-    margin: 42px 58px;
+    margin: 42px 0 58px;
   }
 }
 
@@ -2477,6 +2482,118 @@ html {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.explore-container + .explore-container {
+  margin-top: 56px;
+}
+
+.explore-content {
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 991.98px) {
+  .explore-content {
+    flex-direction: column-reverse;
+    gap: 26px;
+  }
+}
+.explore-content__desc {
+  width: 50%;
+}
+@media (max-width: 991.98px) {
+  .explore-content__desc {
+    width: 100%;
+  }
+}
+.explore-content__img {
+  width: 30%;
+  border-radius: 10px;
+}
+@media (max-width: 991.98px) {
+  .explore-content__img {
+    width: 100%;
+  }
+}
+
+.explore-wrap__title {
+  font-size: 2rem !important;
+}
+.explore-wrap__list {
+  margin-top: 26px;
+}
+.explore-wrap__item {
+  gap: 10px;
+}
+.explore-wrap__item + .explore-wrap__item {
+  margin-top: 12px;
+}
+@media (max-width: 991.98px) {
+  .explore-wrap__item + .explore-wrap__item {
+    margin-top: 22px;
+  }
+}
+
+.explore-exercise__content {
+  justify-content: space-between;
+  padding: 14px 30px 14px 48px;
+  background: var(--thirst-bg-color);
+  border-radius: 12px 12px 0 0;
+}
+@media (max-width: 991.98px) {
+  .explore-exercise__content {
+    padding: 14px 28px;
+  }
+}
+.explore-exercise__box {
+  gap: 12px;
+}
+.explore-exercise__icon {
+  width: 22px;
+}
+@media (max-width: 767.98px) {
+  .explore-exercise__icon {
+    width: 16px;
+  }
+}
+.explore-exercise__title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+@media (max-width: 767.98px) {
+  .explore-exercise__title {
+    font-size: 1.6rem;
+  }
+}
+.explore-exercise__desc {
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+.explore-exercise__item {
+  padding: 14px 30px;
+  justify-content: space-between;
+}
+.explore-exercise__item:hover {
+  background: rgba(73, 72, 72, 0.4588235294);
+}
+.explore-exercise__link {
+  width: 100%;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+.explore-exercise__check {
+  width: 22px;
+}
+.explore-exercise__un-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #0ca678;
+}
+
+.explore-exercise + .explore-exercise {
+  margin-top: 32px;
 }
 
 .section-heading {
