@@ -1,0 +1,148 @@
+@use "../abstracts";
+
+%flexItemCenter {
+    display: flex;
+    align-items: center;
+}
+
+.code-wrap {
+    @extend %flexItemCenter;
+    padding-bottom: 18px;
+
+    &__icon {
+        width: 32px;
+        rotate: 180deg;
+    }
+
+    &__logo {
+        margin: 0 auto;
+    }
+}
+
+.code-containers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+
+    @include abstracts.screen(lg) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.code-container {
+    width: 100%;
+    height: 430px;
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    background: var(--thirst-bg-color);
+    padding: 15px;
+
+    &__wrap {
+        @extend %flexItemCenter;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    &__btn {
+        @extend %flexItemCenter;
+        gap: 5px;
+        height: 30px;
+        padding: 5px 10px;
+        border: 1px solid var(--border-color);
+        background: var(--text-green);
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    &__icon {
+        display: block;
+        width: 12px;
+    }
+
+    &__content {
+        margin-top: 38px;
+        overflow: auto;
+        height: 400px;
+    }
+
+    &__title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+
+    &__sub-title {
+        font-weight: 600;
+        margin: 8px 0;
+    }
+
+    &__desc {
+        line-height: 1.4;
+    }
+}
+
+.code-container__content::-webkit-scrollbar {
+    width: 5px;
+    background-color: var(--thirst-bg-color);
+}
+
+.code-container__content::-webkit-scrollbar-track {
+    border: 1px solid var(--thirst-bg-color);
+    background-color: var(--thirst-bg-color);
+}
+
+.code-container__content::-webkit-scrollbar-thumb {
+    background: rgb(198, 169, 5);
+    background: linear-gradient(
+        180deg,
+        rgba(198, 169, 5, 0.9585084033613446) 31%,
+        rgba(255, 212, 59, 1) 83%
+    );
+    border-radius: 99px;
+}
+
+.code-chat {
+    position: relative;
+
+    &__message {
+        height: 350px;
+    }
+
+    &__form {
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        translate: -50%;
+    }
+
+    &__input {
+        width: 520px;
+        height: 42px;
+        padding: 5px 110px 5px 15px;
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        word-wrap: break-word;
+
+        font-size: 1.8rem;
+        color: var(--text-white-color);
+
+        &::placeholder {
+            font-size: 1.8rem;
+            color: var(--text-white-color);
+        }
+
+        @include abstracts.screen(xl) {
+            width: 450px;
+        }
+
+        @include abstracts.screen(lg) {
+            width: 476px;
+        }
+
+        @include abstracts.screen(sm) {
+            width: 276px;
+        }
+    }
+}
