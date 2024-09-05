@@ -29,9 +29,17 @@ class ConversationService {
         }
     }
 
-    public function findById($id) {
+    public function findByUserId($userId) {
         try {
-            $conversation = $this->conversationRepository->find($id);
+            return $this->conversationRepository->findUserId($userId);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function findById($id, $userId) {
+        try {
+            $conversation = $this->conversationRepository->find($id, $userId);
             return $conversation;
         } catch (\Throwable $th) {
             throw $th;

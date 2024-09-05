@@ -15,6 +15,16 @@ class Exercise extends Model
         'title',
         'description',
         'constraints',
-        'difficulty'
+        'difficulty',
+        'slug',
+        'category_id'
     ];
+
+    public function exerciseExample() {
+        return $this->hasMany(ExerciseExample::class,'exercise_id');
+    }
+
+    public function category() {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }

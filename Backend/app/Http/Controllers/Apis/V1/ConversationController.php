@@ -22,9 +22,18 @@ class ConversationController extends Controller
         }
     }
 
-    public function show($id) {
+    public function getByUserId($userId) {
         try {
-            $conversation = $this->conversationService->findById($id);
+            $conversation = $this->conversationService->findByUserId($userId);
+            return response()->json(['data' => $conversation], 200);
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage()], 400);
+        }
+    }
+
+    public function show($id, $user_id) {
+        try {
+            $conversation = $this->conversationService->findById($id, $user_id);
             if (empty($conversation)) {
                 return response()->json(['error' => 'Conversation not found!'], 404);
             }

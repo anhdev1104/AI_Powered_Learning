@@ -420,6 +420,11 @@
                 "tags": [
                     "Conversations"
                 ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "summary": "Get Paginated List of Conversations",
                 "operationId": "getPaginatedConversations",
                 "parameters": [
@@ -489,10 +494,109 @@
                 }
             }
         },
+        "/api/v1/conversations/{id}/{user_id}": {
+            "get": {
+                "tags": [
+                    "Conversations"
+                ],
+                "summary": "Find a Conversation by ID",
+                "operationId": "findConversationById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the conversation to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "ID of the conversation to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Conversation retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "description": "Details of the conversation",
+                                            "example": {
+                                                "id": 1,
+                                                "title": "Example Conversation",
+                                                "created_at": "2024-09-01T12:34:56Z",
+                                                "updated_at": "2024-09-01T12:34:56Z"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Conversation not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Error message",
+                                            "example": "Conversation not found"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Error message",
+                                            "example": "An error occurred while retrieving the conversation"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/v1/conversations/{id}": {
             "delete": {
                 "tags": [
                     "Conversations"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
                 ],
                 "summary": "Delete a Conversation",
                 "operationId": "deleteConversation",
@@ -561,85 +665,430 @@
                         }
                     }
                 }
-            },
-            "get": {
+            }
+        },
+        "/api/v1/al/chat": {
+            "post": {
                 "tags": [
-                    "Conversations"
+                    "AL"
                 ],
-                "summary": "Find a Conversation by ID",
-                "operationId": "findConversationById",
-                "parameters": [
+                "security": [
                     {
-                        "name": "id",
-                        "in": "path",
-                        "description": "ID of the conversation to retrieve",
-                        "required": true,
-                        "schema": {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Gửi một prompt tới dịch vụ AI và nhận phản hồi",
+                "description": "Gửi một prompt từ người dùng tới dịch vụ AI để nhận phản hồi.",
+                "requestBody": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                        "user_id": {
                             "type": "integer",
                             "example": 1
+                        },
+                        "prompt": {
+                            "type": "string",
+                            "example": "Hãy cho tôi biết về lập trình Python."
+                        },
+                        "id": {
+                            "type": "integer",
+                            "example": 123,
+                            "nullable": true
                         }
+                        },
+                        "required": ["user_id", "prompt"]
+                    }
+                    }
+                }
+                },
+                "responses": {
+                "200": {
+                    "description": "Phản hồi thành công",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "properties": {
+                            "data": {
+                            "type": "string",
+                            "example": "Python là một ngôn ngữ lập trình mạnh mẽ và linh hoạt..."
+                            },
+                            "user_id": {
+                            "type": "integer",
+                            "example": 1
+                            }
+                        }
+                        }
+                    }
+                    }
+                },
+                "400": {
+                    "description": "Lỗi yêu cầu không hợp lệ",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "properties": {
+                            "error": {
+                            "type": "string",
+                            "example": "Đã có lỗi xảy ra."
+                            }
+                        }
+                        }
+                    }
+                    }
+                }
+                }
+            }
+        },
+        "/api/v1/users/{userId}/conversations": {
+            "get": {
+                "tags": [
+                    "AL"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
                     }
                 ],
+                "summary": "Lấy cuộc trò chuyện theo ID người dùng",
+                "description": "Truy vấn cơ sở dữ liệu để tìm tất cả các cuộc trò chuyện thuộc về người dùng với ID cụ thể.",
+                "parameters": [
+                {
+                    "name": "userId",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                    "type": "integer",
+                    "example": 1
+                    },
+                    "description": "ID của người dùng để tìm cuộc trò chuyện."
+                }
+                ],
                 "responses": {
-                    "200": {
-                        "description": "Conversation retrieved successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "data": {
-                                            "type": "object",
-                                            "description": "Details of the conversation",
-                                            "example": {
-                                                "id": 1,
-                                                "title": "Example Conversation",
-                                                "created_at": "2024-09-01T12:34:56Z",
-                                                "updated_at": "2024-09-01T12:34:56Z"
-                                            }
-                                        }
-                                    }
+                "200": {
+                    "description": "Danh sách các cuộc trò chuyện của người dùng",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "properties": {
+                            "data": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                "id": {
+                                    "type": "integer",
+                                    "example": 123
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "example": "Cuộc trò chuyện về công nghệ"
+                                },
+                                "user_id": {
+                                    "type": "integer",
+                                    "example": 1
                                 }
+                                }
+                            }
                             }
                         }
-                    },
-                    "404": {
-                        "description": "Conversation not found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "error": {
-                                            "type": "string",
-                                            "description": "Error message",
-                                            "example": "Conversation not found"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "error": {
-                                            "type": "string",
-                                            "description": "Error message",
-                                            "example": "An error occurred while retrieving the conversation"
-                                        }
-                                    }
-                                }
-                            }
                         }
                     }
+                    }
+                },
+                "404": {
+                    "description": "Không tìm thấy cuộc trò chuyện cho người dùng",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "properties": {
+                            "error": {
+                            "type": "string",
+                            "example": "Không tìm thấy cuộc trò chuyện cho người dùng này."
+                            }
+                        }
+                        }
+                    }
+                    }
+                },
+                "500": {
+                    "description": "Lỗi máy chủ khi xử lý yêu cầu",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "properties": {
+                            "error": {
+                            "type": "string",
+                            "example": "Đã xảy ra lỗi khi tìm kiếm cuộc trò chuyện."
+                            }
+                        }
+                        }
+                    }
+                    }
+                }
+                }
+            }
+        },
+        "/api/v1/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Lấy danh sách phân trang các danh mục",
+                "description": "Lấy các danh mục với giới hạn số lượng trả về trên mỗi trang.",
+                "parameters": [
+                {
+                    "name": "limit",
+                    "in": "query",
+                    "required": false,
+                    "schema": {
+                    "type": "integer",
+                    "example": 10
+                    },
+                    "description": "Số lượng danh mục trên mỗi trang."
+                }
+                ],
+                "responses": {
+                "200": {
+                    "description": "Danh sách phân trang các danh mục",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "properties": {
+                            "data": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                "id": {
+                                    "type": "integer",
+                                    "example": 1
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "example": "Công nghệ"
+                                },
+                                "slug": {
+                                    "type": "string",
+                                    "example": "cong-nghe"
+                                }
+                                }
+                            }
+                            },
+                            "pagination": {
+                            "type": "object",
+                            "properties": {
+                                "current_page": {
+                                "type": "integer",
+                                "example": 1
+                                },
+                                "per_page": {
+                                "type": "integer",
+                                "example": 10
+                                },
+                                "total": {
+                                "type": "integer",
+                                "example": 50
+                                }
+                            }
+                            }
+                        }
+                        }
+                    }
+                    }
+                },
+                "500": {
+                    "description": "Lỗi máy chủ khi xử lý yêu cầu",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "properties": {
+                            "error": {
+                            "type": "string",
+                            "example": "Đã xảy ra lỗi khi lấy danh sách phân trang các danh mục."
+                            }
+                        }
+                        }
+                    }
+                    }
+                }
+                }
+            }
+        },
+        "/api/v1/categories/{slug}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Tìm danh mục theo slug",
+                "description": "Trả về thông tin của một danh mục dựa trên slug của danh mục.",
+                "parameters": [
+                {
+                    "name": "slug",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                    "type": "string",
+                    "example": "cong-nghe"
+                    },
+                    "description": "Slug của danh mục cần tìm."
+                }
+                ],
+                "responses": {
+                "200": {
+                    "description": "Thông tin chi tiết của danh mục",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                            "type": "integer",
+                            "example": 1
+                            },
+                            "name": {
+                            "type": "string",
+                            "example": "Công nghệ"
+                            },
+                            "slug": {
+                            "type": "string",
+                            "example": "cong-nghe"
+                            }
+                        }
+                        }
+                    }
+                    }
+                },
+                "404": {
+                    "description": "Danh mục không được tìm thấy",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "properties": {
+                            "error": {
+                            "type": "string",
+                            "example": "Không tìm thấy danh mục với slug đã cho."
+                            }
+                        }
+                        }
+                    }
+                    }
+                },
+                "500": {
+                    "description": "Lỗi máy chủ khi xử lý yêu cầu",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "properties": {
+                            "error": {
+                            "type": "string",
+                            "example": "Đã xảy ra lỗi khi tìm danh mục theo slug."
+                            }
+                        }
+                        }
+                    }
+                    }
+                }
+                }
+            }
+        },
+        "/api/v1/exercises/{slug}": {
+            "get": {
+                "tags": [
+                    "Exercises"
+                ],
+                "summary": "Tìm bài tập theo slug",
+                "description": "Trả về thông tin chi tiết của một bài tập dựa trên slug của nó.",
+                "parameters": [
+                {
+                    "name": "slug",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                    "type": "string",
+                    "example": "bai-tap-co-ban"
+                    },
+                    "description": "Slug của bài tập cần tìm."
+                }
+                ],
+                "responses": {
+                "200": {
+                    "description": "Thông tin chi tiết của bài tập",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                            "type": "integer",
+                            "example": 1
+                            },
+                            "title": {
+                            "type": "string",
+                            "example": "Bài tập cơ bản"
+                            },
+                            "description": {
+                            "type": "string",
+                            "example": "Đây là một bài tập cơ bản về lập trình."
+                            },
+                            "slug": {
+                            "type": "string",
+                            "example": "bai-tap-co-ban"
+                            }
+                        }
+                        }
+                    }
+                    }
+                },
+                "404": {
+                    "description": "Bài tập không được tìm thấy",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "properties": {
+                            "error": {
+                            "type": "string",
+                            "example": "Không tìm thấy bài tập với slug đã cho."
+                            }
+                        }
+                        }
+                    }
+                    }
+                },
+                "500": {
+                    "description": "Lỗi máy chủ khi xử lý yêu cầu",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "properties": {
+                            "error": {
+                            "type": "string",
+                            "example": "Đã xảy ra lỗi khi tìm bài tập theo slug."
+                            }
+                        }
+                        }
+                    }
+                    }
+                }
                 }
             }
         }
+
+
 
     },
     "components": {

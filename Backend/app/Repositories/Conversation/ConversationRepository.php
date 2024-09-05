@@ -8,8 +8,11 @@ class ConversationRepository implements ConversationRepositoryInterface {
     public function all() {
         return Conversation::all();
     }
-    public function find($id) {
-        return Conversation::with('messages')->find($id);
+    public function find($id, $user_id) {
+        return Conversation::with('messages')->where('user_id', $user_id)->find($id);
+    }
+    public function findUserId($id) {
+        return Conversation::where('user_id', $id)->get();
     }
     public function paginate($limit) {
         $conversation = Conversation::with('messages');

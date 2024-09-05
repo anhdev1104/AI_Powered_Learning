@@ -1,10 +1,10 @@
 <?php
-namespace App\Repositories\Conversation;
+namespace App\Repositories\Category;
 
-interface ConversationRepositoryInterface {
+interface CategoryRepositoryInterface {
     public function all();
-    public function find($id, $user_id);
-    public function findUserId($id);
+    public function find($id);
+    public function findBySlug($slug);
     public function paginate($limit);
     public function create(array $data);
     public function update($id, array $data);
