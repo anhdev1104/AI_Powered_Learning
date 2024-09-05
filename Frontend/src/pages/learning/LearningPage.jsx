@@ -35,7 +35,62 @@ const LearningPage = () => {
           <div className="flex items-center justify-between mb-5">
             <span className="font-semibold">Question</span>
           </div>
-          <div className="h-[60vh] bg-[#1e1e1e] p-10 "></div>
+          <div className="h-[60vh] bg-[#1e1e1e] p-10 overflow-y-auto question-box">
+            <article class="code-container">
+              <section class="code-container__content">
+                <h3 class="code-container__title capitalize !text-4xl">{question?.data?.title}</h3>
+                <p
+                  class={`code-container__level capitalize ${
+                    question?.data?.difficulty === 'easy' ? '!text-[#46c6c2]' : '!text-yellow-500'
+                  }`}
+                >
+                  {question?.data?.difficulty}
+                </p>
+                <p class="code-container__desc">{question?.data?.description}</p>
+              </section>
+
+              <div class="code-boxer">
+                {question?.data?.exercise_example.map((item, index) => (
+                  <div class="code-boxer__row" key={item?.id}>
+                    <h4 class="code-boxer__title">{`Example ${index + 1}`}</h4>
+                    <div class="code-boxer__wrap">
+                      <p class="code-boxer__sub-title">Input:</p>
+                      <p class="code-boxer__desc">{item?.input}</p>
+                      <p class="code-boxer__sub-title">
+                        Output:
+                        <span class="code-boxer__desc"> {item?.output}</span>
+                      </p>
+                      <p class="code-boxer__sub-title">Explanation:</p>
+                      <p class="code-boxer__desc">{item?.description}</p>
+                    </div>
+                  </div>
+                ))}
+
+                {/* <div class="code-boxer__row">
+                  <h4 class="code-boxer__title">Example 2:</h4>
+                  <div class="code-boxer__wrap">
+                    <p class="code-boxer__sub-title">Input:</p>
+                    <p class="code-boxer__desc">n = -2</p>
+                    <p class="code-boxer__desc">["call","call","call","call","call"]</p>
+                    <p class="code-boxer__sub-title">
+                      Output:
+                      <span class="code-boxer__desc">[-2,-1,0,1,2]</span>
+                    </p>
+                    <p class="code-boxer__sub-title">Explanation:</p>
+                    <p class="code-boxer__desc">
+                      counter() initially returns -2. Then increases after each sebsequent call.
+                    </p>
+                  </div>
+                </div> */}
+              </div>
+              <div class="code-boxer">
+                <p class="code-boxer__sub-title">Explanation:</p>
+                <ul class="code-boxer__list">
+                  <li class="code-boxer__item">{question?.data?.constraints}</li>
+                </ul>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
       <div className="w-2/4">
