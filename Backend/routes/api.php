@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Apis\V1\AuthController;
+use App\Http\Controllers\Apis\V1\ChatAlController;
+use App\Http\Controllers\Apis\V1\ConversationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,5 +18,16 @@ Route::prefix('v1')->group(function () {
             Route::post('/refresh', 'refresh');
             Route::post('/logout', 'logout')->middleware('jwt.auth');
             Route::get('/profile', 'profile')->middleware('jwt.auth');
+        });
+    Route::controller(ChatAlController::class)->prefix('al')
+        ->group(function () {
+            Route::post('/chat', 'chatBox')->middleware('jwt.auth');
+        });
+
+    Route::controller(ConversationController::class)->prefix('conversations')
+        ->group(function () {
+            Route::get('/', 'paginate');
+            Route::get('/{id}', 'show');
+            Route::delete('/{id}', 'delete');
         });
 });

@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subscriptions extends Model
+class SubscriptionAction extends Model
 {
     use HasFactory;
 
-    protected $table = 'subscriptions';
+    protected $table = 'subscription_actions';
 
-    protected $filable = [
+    protected $fillable = [
         'name',
         'description',
-        'price',
-        'duration',
+        'subscription_id',
     ];
 }

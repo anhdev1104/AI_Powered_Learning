@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserSubscriptions extends Model
+class Message extends Model
 {
     use HasFactory;
 
-    protected $table = 'user_subscriptions';
+    protected $table = 'messages';
 
     protected $fillable = [
-        'user_id',
-        'subscription_id',
-        'start_date',
-        'end_date'
+        'conversation_id',
+        'sender_type',
+        'message_text'
     ];
 }

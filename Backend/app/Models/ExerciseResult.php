@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ExerciseResults extends Model
+class ExerciseResult extends Model
 {
     use HasFactory;
 
     protected $table = 'exercise_results';
 
-    protected $filable = [
+    protected $fillable = [
         'status',
         'memory_used',
         'solution_id'

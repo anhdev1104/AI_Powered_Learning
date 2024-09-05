@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Solutions extends Model
+class Solution extends Model
 {
     use HasFactory;
 
     protected $table = 'solutions';
 
-    protected $filable = [
+    protected $fillable = [
         'code',
         'language',
         'exercise_id',

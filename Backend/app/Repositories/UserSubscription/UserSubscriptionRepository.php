@@ -1,9 +1,9 @@
 <?php
-namespace App\Repositories\Exercise;
+namespace App\Repositories\UserSubscription;
 
-use App\Repositories\Exercise\ExerciseRepositoryInterface;
+use App\Repositories\UserSubscription\UserSubscriptionRepositoryInterface;
 
-class ExerciseRepository implements ExerciseRepositoryInterface {
+class UserSubscriptionRepository implements UserSubscriptionRepositoryInterface {
     public function all() {
         
     }
