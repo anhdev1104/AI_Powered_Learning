@@ -31,7 +31,7 @@
 
 .code-container {
     width: 100%;
-    height: 430px;
+    height: 100%;
     border: 2px solid var(--border-color);
     border-radius: 20px;
     background: var(--thirst-bg-color);
@@ -64,13 +64,21 @@
     &__content {
         margin-top: 38px;
         overflow: auto;
-        height: 400px;
     }
 
     &__title {
-        font-size: 1.8rem;
+        font-size: 2.4rem;
         font-weight: 600;
         margin-bottom: 12px;
+    }
+
+    &__level {
+        display: inline-block;
+        padding: 7px 12px;
+        border-radius: 99px;
+        font-size: 1.2rem;
+        color: #46c6c2;
+        background: var(--primary-bg-color);
     }
 
     &__sub-title {
@@ -79,6 +87,8 @@
     }
 
     &__desc {
+        margin-top: 22px;
+        font-size: 1.4rem;
         line-height: 1.4;
     }
 }
@@ -144,5 +154,55 @@
         @include abstracts.screen(sm) {
             width: 276px;
         }
+    }
+}
+
+.code-boxer {
+    margin-top: 48px;
+
+    &__row + &__row {
+        margin-top: 32px;
+    }
+
+    &__title {
+        font-weight: 600;
+    }
+
+    &__wrap {
+        margin-top: 18px;
+        padding-left: 23px;
+        border-left: 2px solid var(--border-color);
+    }
+
+    &__sub-title {
+        margin-top: 12px;
+        font-weight: 600;
+    }
+
+    &__desc {
+        color: var(--text-while-shadow-color);
+        font-size: 1.6rem;
+        font-weight: 400;
+        margin-top: 10px;
+        line-height: 1.5;
+    }
+
+    &__desc + &__desc {
+        margin-top: 0;
+    }
+
+    &__list {
+        padding-left: 22px;
+        margin-top: 16px;
+        list-style-type: disc;
+    }
+
+    &__item {
+        padding: 3px 5px;
+        border-radius: 5px;
+    }
+
+    &__item + &__item {
+        margin-top: 8px;
     }
 }
