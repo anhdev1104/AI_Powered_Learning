@@ -2,25 +2,15 @@ const Banner = () => {
   return (
     <div id="home" className="home">
       <div className="home__container">
-        <video
-          className="home__video aspect-video"
-          width="60%"
-          height="466"
-          autoPlay
-          muted
-          loop
-          poster="./assets/video/poster.png"
-        >
-          <source src="./assets/video/Team Daddy World.mp4" type="video/mp4" />
-          <source src="./assets/video/Team-Daddy-World.ogg" type="video/ogg" />
-          Your browser does not support the video tag.
-        </video>
-        <div className="home__wrap-img d-md-none">
-          <img src="./assets/img/logo.png" alt="" className="home__logo" />
-          <h2 className="home__title section-heading">AI FOR EDUCATION</h2>
+        <div className="h-[700px] overflow-hidden ">
+          <img className="w-full h-full object-cover" src="/assets/img/home/coder-ai.png"></img>
         </div>
+        {/* <div className="home__wrap-img d-md-none">
+          <img src="./assets/img/logo.png" alt="" className="home__logo " />
+          <h2 className="home__title section-heading">AI FOR EDUCATION</h2>
+        </div> */}
       </div>
-      <div className="home__wrap d-sm-none">
+      <div className="home__wrap d-sm-none z-[-1]">
         <div className="home__slide">
           <div className="home__box">
             <span className="home__text section-desc">Hello</span>

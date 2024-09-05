@@ -1,7 +1,7 @@
 <?php
-namespace App\Repositories\Exercise;
+namespace App\Repositories\Message;
 
-interface ExerciseRepositoryInterface {
+interface MessageRepositoryInterface {
     public function all();
     public function find($id);
     public function paginate($limit);
