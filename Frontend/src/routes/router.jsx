@@ -8,8 +8,14 @@ import LearningPage from '@/pages/learning/LearningPage';
 import ExplorePage from '@/pages/explore/ExplorePage';
 import LayoutAI from '@/components/layouts/LayoutAI';
 import ChatAIPage from '@/pages/chatAI/ChatAIPage';
+import ExploreItem from '@/pages/exploreItem/ExploreItem';
 
 const clientRouter = [
+  {
+    path: '/explore-item',
+    element: ExploreItem,
+    title: 'Daddy Explore Item',
+  },
   {
     path: '/explore',
     element: ExplorePage,
@@ -37,7 +43,7 @@ const authRouter = [
 
 const learningRouter = [
   {
-    path: '/learning',
+    path: '/learning/:slug',
     element: LearningPage,
     title: 'Daddy learning',
   },

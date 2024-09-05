@@ -55,9 +55,9 @@ const Header = () => {
                     Chat AI
                   </Link>
                 </li>
-                <li class="navbar__item d-sm-none hover:border-transparent">
+                <li className="navbar__item d-sm-none hover:border-transparent">
                   <Link to="/profile" class="navbar__link">
-                    <img src="./assets/img/feedback/avt1.jpg" alt="" class="navbar__avt" />
+                    <img src={user.avatar} alt="" className="navbar__avt" />
                   </Link>
                 </li>
               </>
@@ -72,7 +72,7 @@ const Header = () => {
           </ul>
           {user && (
             <Link to="/auth" onClick={handleLogout}>
-              <img src="./assets/icon/logout.svg" alt="" class="navbar__icon" />
+              <img src="./assets/icon/logout.svg" alt="" className="navbar__icon" />
             </Link>
           )}
           <div className="navbar-mobile d-none d-lg-block">

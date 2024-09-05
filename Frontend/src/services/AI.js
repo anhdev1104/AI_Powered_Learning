@@ -10,3 +10,21 @@ export const chatAI = async question => {
     return error;
   }
 };
+
+export const oldChatAI = async userId => {
+  try {
+    const data = await http.get(`/users/${userId}/conversations`);
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const oldMessageChatDetails = async (id, userId) => {
+  try {
+    const data = await http.get(`/conversations/${id}/${userId}`);
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
