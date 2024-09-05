@@ -1,24 +1,15 @@
-<<<<<<< HEAD
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-=======
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
->>>>>>> a3c28d8fe8b9f2933ceccff407450ca93974b740
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
-<<<<<<< HEAD
-  </StrictMode>,
-)
-=======
+    <ToastContainer position="top-center" theme="colored" autoClose={3000} />
   </StrictMode>
 );
->>>>>>> a3c28d8fe8b9f2933ceccff407450ca93974b740

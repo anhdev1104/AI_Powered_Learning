@@ -9,9 +9,9 @@ const Feedback = () => {
         </section>
       </div>
 
-      <div className="feedback-container">
+      <div className="feedback-container !mt-10">
         <div className="feedback-container__carousel">
-          <Swiper grabCursor={'true'} slidesPerView={'auto'}>
+          <Swiper grabCursor={'true'} slidesPerView={'auto'} spaceBetween={'10px'}>
             <SwiperSlide>
               <article className="feedback-container__box" draggable="false">
                 <div className="feedback-container__wrap">
@@ -25,7 +25,7 @@ const Feedback = () => {
                   </div>
                 </div>
                 <h3 className="feedback-container__title section-heading">#Thank you</h3>
-                <p className="feedback-container__desc">Thank you Daddy World team for creating a great learning app</p>
+                <div className="mt-10 leading-8">Thank you Daddy World team for creating a great learning app</div>
               </article>
             </SwiperSlide>
             <SwiperSlide>
@@ -41,9 +41,9 @@ const Feedback = () => {
                   </div>
                 </div>
                 <h3 className="feedback-container__title section-heading">#Contribute</h3>
-                <p className="feedback-container__desc">
+                <div className="mt-10 leading-8">
                   The application is great, helps me review old knowledge, I hope the team develops more new languages
-                </p>
+                </div>
               </article>
             </SwiperSlide>
             <SwiperSlide>
@@ -59,10 +59,10 @@ const Feedback = () => {
                   </div>
                 </div>
                 <h3 className="feedback-container__title section-heading">#Question</h3>
-                <p className="feedback-container__desc">
+                <div className="mt-10 leading-8">
                   Will the team continue to develop new languages ​​in the future? If so, that would be great for
                   students like us.
-                </p>
+                </div>
               </article>
             </SwiperSlide>
             <SwiperSlide>
@@ -78,7 +78,7 @@ const Feedback = () => {
                   </div>
                 </div>
                 <h3 className="feedback-container__title section-heading">#Thank you</h3>
-                <p className="feedback-container__desc">Thank you Daddy World team for creating a great learning app</p>
+                <div className="mt-10 leading-8">Thank you Daddy World team for creating a great learning app</div>
               </article>
             </SwiperSlide>
             <SwiperSlide>
@@ -94,9 +94,9 @@ const Feedback = () => {
                   </div>
                 </div>
                 <h3 className="feedback-container__title section-heading">#Contribute</h3>
-                <p className="feedback-container__desc">
+                <div className="mt-10 leading-8">
                   The application is great, helps me review old knowledge, I hope the team develops more new languages
-                </p>
+                </div>
               </article>
             </SwiperSlide>
             <SwiperSlide>
@@ -112,10 +112,10 @@ const Feedback = () => {
                   </div>
                 </div>
                 <h3 className="feedback-container__title section-heading">#Question</h3>
-                <p className="feedback-container__desc">
+                <div className="mt-10 leading-8">
                   Will the team continue to develop new languages ​​in the future? If so, that would be great for
                   students like us.
-                </p>
+                </div>
               </article>
             </SwiperSlide>
           </Swiper>
