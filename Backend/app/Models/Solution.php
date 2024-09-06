@@ -17,5 +17,6 @@ class Solution extends Model
         'exercise_id',
         'user_id'
     ];
+
     
 }

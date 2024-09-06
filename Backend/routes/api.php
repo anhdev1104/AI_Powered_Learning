@@ -21,9 +21,10 @@ Route::prefix('v1')->group(function () {
             Route::post('/logout', 'logout')->middleware('jwt.auth');
             Route::get('/profile', 'profile')->middleware('jwt.auth');
         });
-    Route::controller(ChatAlController::class)->prefix('al')
+    Route::controller(ChatAlController::class)->prefix('al')->middleware('jwt.auth')
         ->group(function () {
-            Route::post('/chat', 'chatBox')->middleware('jwt.auth');
+            Route::post('/chat', 'chatBox');
+            Route::post('/check-exercise', 'checkExercise');
         });
     Route::prefix('users')->group(function () {
         Route::get('/{id}/conversations', [ConversationController::class, 'getByUserId']);

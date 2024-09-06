@@ -1086,6 +1086,104 @@
                 }
                 }
             }
+        },
+        "/api/v1/al/check-exercise": {
+            "post": {
+                "tags": [
+                    "AL"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Kiểm tra bài giải bài tập",
+                "description": "Kiểm tra bài giải cho một bài tập dựa trên ID bài tập và nội dung bài giải do người dùng cung cấp. Trả về kết quả 'passed' hoặc 'failed' dựa trên việc bài giải có đúng hay không.",
+                "requestBody": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                        "exercise_id": {
+                            "type": "integer",
+                            "description": "ID của bài tập cần kiểm tra",
+                            "example": 123
+                        },
+                        "prompt": {
+                            "type": "string",
+                            "description": "Nội dung bài giải do người dùng cung cấp",
+                            "example": "function solve() { return true; }"
+                        },
+                        "user_id": {
+                            "type": "integer",
+                            "description": "ID người dùng",
+                            "example": 456
+                        },
+                        "language": {
+                            "type": "string",
+                            "description": "Ngôn ngữ lập trình của bài giải",
+                            "example": "PHP"
+                        }
+                        },
+                        "required": ["exercise_id", "prompt", "user_id", "language"]
+                    }
+                    }
+                }
+                },
+                "responses": {
+                "200": {
+                    "description": "Kết quả kiểm tra bài giải",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "properties": {
+                            "result": {
+                            "type": "string",
+                            "description": "Kết quả trả về sau khi kiểm tra bài giải ('passed' hoặc 'failed')",
+                            "example": "passed"
+                            }
+                        }
+                        }
+                    }
+                    }
+                },
+                "400": {
+                    "description": "Yêu cầu không hợp lệ",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "properties": {
+                            "error": {
+                            "type": "string",
+                            "example": "Invalid exercise ID or prompt data."
+                            }
+                        }
+                        }
+                    }
+                    }
+                },
+                "500": {
+                    "description": "Lỗi máy chủ khi xử lý yêu cầu",
+                    "content": {
+                    "application/json": {
+                        "schema": {
+                        "type": "object",
+                        "properties": {
+                            "error": {
+                            "type": "string",
+                            "example": "Đã xảy ra lỗi trong quá trình kiểm tra bài giải."
+                            }
+                        }
+                        }
+                    }
+                    }
+                }
+                }
+            }
         }
 
 

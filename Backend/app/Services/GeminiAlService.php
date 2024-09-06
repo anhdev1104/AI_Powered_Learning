@@ -4,11 +4,17 @@ namespace App\Services;
 use Gemini\Laravel\Facades\Gemini;
 use App\Repositories\Message\MessageRepositoryInterface;
 use App\Repositories\Conversation\ConversationRepositoryInterface;
+use App\Repositories\Exercise\ExerciseRepositoryInterface;
+use App\Repositories\ExerciseResult\ExerciseResultRepositoryInterface;
+use App\Repositories\Solution\SolutionRepositoryInterface;
 
 class GeminiAlService {
     private $gemini;
     private $conversationRepository;
     private $messageRepository;
+    private $exerciseRepository;
+    private $solutionRepository;
+    private $exerciseResultRepository;
     private $keywords = [
         'lập trình', 'iphone', 'code', 'phần mềm', 'phần cứng', 'công nghệ', 
         'web', 'ứng dụng', 'developer', 'programming', 'API', 
@@ -83,10 +89,13 @@ class GeminiAlService {
     ];
     
     
-    public function __construct(Gemini $gemini, ConversationRepositoryInterface $conversationRepository, MessageRepositoryInterface $messageRepository) {
+    public function __construct(Gemini $gemini, ConversationRepositoryInterface $conversationRepository, MessageRepositoryInterface $messageRepository, ExerciseRepositoryInterface $exerciseRepository, SolutionRepositoryInterface $solutionRepository, ExerciseResultRepositoryInterface $exerciseResultRepository) {
         $this->gemini = $gemini;
         $this->conversationRepository = $conversationRepository;
         $this->messageRepository = $messageRepository;
+        $this->exerciseRepository = $exerciseRepository;
+        $this->solutionRepository = $solutionRepository;
+        $this->exerciseResultRepository = $exerciseResultRepository;
     }
 
     public function generateText($prompt, $user_id, $id = null) {
@@ -119,6 +128,56 @@ class GeminiAlService {
                 'sender_type' => 'aI',
                 'message_text' => $resData
             ]);
+
+            return $resData;
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+    public function checkExercise($exercise_id, $prompt, $user_id, $language) {
+        try {
+            $dataExercise = $this->exerciseRepository->find($exercise_id);
+            $text = "";
+            $instruction = "Hãy giải bài tập nếu bài tập đúng trả về 'passed' nếu sai trả về 'failed'";
+            foreach ($dataExercise->exerciseExample as $item) {
+                $text .= "
+                    input: {$item->input}
+                    \n
+                    output: {$item->output}
+                    \n
+                    Explanation: {$item->description}
+                    \n
+                ";
+            }
+
+            $exercise = "Exercise: \n {$dataExercise->title} \n {$dataExercise->description} \n\n {$text}";
+            $promptData = "Solution: \n {$prompt}";
+
+            $inputData = $instruction ."\n". $exercise ."\n".$promptData;
+
+            $response = $this->gemini::geminiPro()->generateContent($inputData);
+            $resData = $response->text();
+            $checkSolution = $this->solutionRepository->checkExist($user_id, $exercise_id);
+            if (empty($checkSolution)) {
+                $solution = $this->solutionRepository->create([
+                    'code' => $prompt,
+                    'language' => $language,
+                    'exercise_id' => $exercise_id,
+                    'user_id' => $user_id,
+                ]);
+    
+                $exercise_ressult = $this->exerciseResultRepository->create([
+                    'status' => $resData,
+                    'solution_id' => $solution->id
+                ]);
+            }else {
+                $this->solutionRepository->update($checkSolution->id, [
+                    'code' => $prompt,
+                ]);
+                $this->exerciseResultRepository->updateSolutionId($checkSolution->id, [
+                    'status' => $resData,
+                ]);
+            }
 
             return $resData;
         } catch (\Throwable $th) {

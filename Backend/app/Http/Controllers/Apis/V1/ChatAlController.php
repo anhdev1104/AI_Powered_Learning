@@ -33,4 +33,24 @@ class ChatAlController extends Controller
             return response()->json(['error' => $th->getMessage()], 400);
         }
     }
+
+    public function checkExercise(Request $request) {
+        try {
+            $request->validate([
+                'exercise_id' => 'required',
+                'user_id' => 'required',
+                'language' => 'required',
+                'prompt' => 'required'
+            ]);
+            $exercise_id = $request->input('exercise_id');
+            $prompt = $request->input('prompt');
+            $user_id = $request->input('user_id');
+            $language = $request->input('language');
+            $res = $this->geminiAlService->checkExercise($exercise_id, $prompt, $user_id, $language);
+
+            return response()->json(['data' => $res], 200);
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage()], 400);
+        }
+    }
 }

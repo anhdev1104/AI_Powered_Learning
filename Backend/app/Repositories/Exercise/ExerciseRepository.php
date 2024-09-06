@@ -9,7 +9,7 @@ class ExerciseRepository implements ExerciseRepositoryInterface {
         return Exercise::all();
     }
     public function find($id) {
-        return Exercise::find($id);
+        return Exercise::with('exerciseExample')->find($id);
     }
     public function findBySlug($slug) {
         return Exercise::with('exerciseExample')->where('slug', $slug)->first();
