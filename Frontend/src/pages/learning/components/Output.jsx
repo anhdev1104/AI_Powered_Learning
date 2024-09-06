@@ -12,7 +12,7 @@ const Output = ({ editorRef, selectedLanguage, exercise_id }) => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
-    user && setUserId(user.data.id);
+    user && setUserId(user?.data?.id);
   }, []);
 
   const runCode = async () => {
