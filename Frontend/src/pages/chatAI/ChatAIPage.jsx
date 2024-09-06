@@ -1,3 +1,4 @@
+import DotLoading from '@/components/loading/DotLoading';
 import { chatAI, oldChatAI, oldMessageChatDetails } from '@/services/AI';
 import { useEffect, useState } from 'react';
 
@@ -8,7 +9,8 @@ const ChatAIPage = () => {
   const [listOldChat, setListOldChat] = useState([]);
   const [account, setAccount] = useState();
   const [messages, setMessages] = useState([]);
-  console.log('🚀 ~ ChatAIPage ~ messages:', messages);
+  const [isLoading, setIsLoading] = useState(false);
+  console.log('🚀 ~ ChatAIPage ~ isLoading:', isLoading);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -34,28 +36,35 @@ const ChatAIPage = () => {
 
   const handleQuestionChatAI = async e => {
     e.preventDefault();
-    const dataQuestion = {
-      prompt: question,
-      user_id: user,
-    };
+    try {
+      setIsLoading(true);
+      const dataQuestion = {
+        prompt: question,
+        user_id: user,
+      };
 
-    const newMessage = {
-      message_text: question,
-      sender_type: 'user', // Đánh dấu tin nhắn là của người dùng
-    };
-    setMessages([...messages, newMessage]);
-    setQuestion('');
+      const newMessage = {
+        message_text: question,
+        sender_type: 'user', // Đánh dấu tin nhắn là của người dùng
+      };
+      setMessages([...messages, newMessage]);
+      setQuestion('');
 
-    // Gửi câu hỏi đến API
-    const dataResAi = await chatAI(dataQuestion);
-    console.log('🚀 ~ handleQuestionChatAI ~ dataResAi:', dataResAi);
+      // Gửi câu hỏi đến API
+      const dataResAi = await chatAI(dataQuestion);
 
-    // Thêm tin nhắn của AI vào danh sách messages sau khi nhận phản hồi
-    const newMessageAI = {
-      message_text: dataResAi.data,
-      sender_type: 'AI',
-    };
-    setMessages(prevMessages => [...prevMessages, newMessageAI]);
+      // Thêm tin nhắn của AI vào danh sách messages sau khi nhận phản hồi
+      const newMessageAI = {
+        message_text: dataResAi.data,
+        sender_type: 'AI',
+      };
+      setMessages(prevMessages => [...prevMessages, newMessageAI]);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -101,6 +110,7 @@ const ChatAIPage = () => {
                   </div>
                 ))}
               </div>
+              {isLoading && <DotLoading />}
 
               <div id="chat-box__wrap" className="chat-box__wrap">
                 <img src="./assets/img/logo.png" alt="" className="chat-box__logo !opacity-[0.2] !ml-28 !w-60" />

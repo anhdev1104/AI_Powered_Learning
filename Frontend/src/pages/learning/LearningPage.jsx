@@ -10,7 +10,6 @@ const LearningPage = () => {
   const editorRef = useRef();
   const [selectedLanguage, setSelectedLanguage] = useState('javascript');
   const [question, setQuestion] = useState([]);
-  console.log('🚀 ~ LearningPage ~ question:', question);
   const { slug } = useParams();
 
   useEffect(() => {

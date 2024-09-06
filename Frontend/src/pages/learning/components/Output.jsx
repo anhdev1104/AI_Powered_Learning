@@ -6,9 +6,7 @@ import { toast } from 'react-toastify';
 const Output = ({ editorRef, selectedLanguage, exercise_id }) => {
   console.log('🚀 ~ Output ~ exercise_id:', exercise_id);
   const [output, setOutput] = useState();
-  const [valueQuestion, setValueQuestion] = useState();
   const [userId, setUserId] = useState();
-  console.log('🚀 ~ Output ~ valueQuestion:', valueQuestion);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
