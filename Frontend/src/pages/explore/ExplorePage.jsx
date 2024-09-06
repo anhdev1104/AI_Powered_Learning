@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ExplorePage = () => {
   return (
@@ -8,7 +8,7 @@ const ExplorePage = () => {
           <h2 className="section-heading">Front-end exercises</h2>
           <div className="explore-container__list">
             <article className="explore-item">
-              <a href="#!">
+              <Link to="/explore-item">
                 <img src="./assets/img/explore/javascript.jpg" alt="" className="explore-item__thumb" />
                 <section className="explore-item__content">
                   <h3 className="explore-item__title section-heading">JavaScript</h3>
@@ -16,7 +16,7 @@ const ExplorePage = () => {
                     There are more than 500 exercises waiting for you to conquer.
                   </p>
                 </section>
-              </a>
+              </Link>
             </article>
 
             <article className="explore-item">

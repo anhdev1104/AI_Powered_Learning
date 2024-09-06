@@ -11,7 +11,22 @@ const Feedback = () => {
 
       <div className="feedback-container !mt-10">
         <div className="feedback-container__carousel">
-          <Swiper grabCursor={'true'} slidesPerView={'auto'} spaceBetween={'10px'}>
+          <Swiper
+            grabCursor={'true'}
+            slidesPerView={'auto'}
+            spaceBetween={'10px'}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              768: {
+                slidesPerView: 3,
+              },
+              1024: {
+                slidesPerView: 4,
+              },
+            }}
+          >
             <SwiperSlide>
               <article className="feedback-container__box" draggable="false">
                 <div className="feedback-container__wrap">
