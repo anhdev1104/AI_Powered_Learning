@@ -19,3 +19,12 @@ export const exerciseDetails = async slug => {
     return error;
   }
 };
+
+export const checkResult = async prompt => {
+  try {
+    const data = await http.post('/al/check-exercise', prompt);
+    return data;
+  } catch (error) {
+    return error;
+  }
+};

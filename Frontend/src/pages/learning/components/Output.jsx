@@ -1,8 +1,20 @@
 import { executeCode } from '@/services/apiEditor';
-import { useState } from 'react';
+import { checkResult } from '@/services/exercises';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
-const Output = ({ editorRef, selectedLanguage }) => {
+const Output = ({ editorRef, selectedLanguage, exercise_id }) => {
+  console.log('🚀 ~ Output ~ exercise_id:', exercise_id);
   const [output, setOutput] = useState();
+  const [valueQuestion, setValueQuestion] = useState();
+  const [userId, setUserId] = useState();
+  console.log('🚀 ~ Output ~ valueQuestion:', valueQuestion);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    user && setUserId(user.data.id);
+  }, []);
+
   const runCode = async () => {
     const sourceCode = editorRef.current.getValue();
     if (!sourceCode) return;
@@ -15,7 +27,22 @@ const Output = ({ editorRef, selectedLanguage }) => {
     }
   };
 
-  const submitCode = async () => {};
+  const submitCode = async () => {
+    const sourceCode = editorRef.current.getValue();
+    const promptQuestion = {
+      exercise_id,
+      prompt: sourceCode,
+      user_id: userId,
+      language: 'javascript',
+    };
+    const data = await checkResult(promptQuestion);
+
+    if (data.data === 'failed') {
+      toast.error('Chưa đúng output, vui lòng kiểm tra lại !');
+    } else {
+      toast.success('Chính xác. Bạn đã hoàn thành bài tập ^^');
+    }
+  };
   return (
     <div className="my-10">
       <div>
@@ -30,7 +57,7 @@ const Output = ({ editorRef, selectedLanguage }) => {
             </button>
             <button
               className="py-4 px-7 bg-green-700 hover:bg-green-500 transition-all text-white rounded-md font-semibold text-2xl"
-              onClick={runCode}
+              onClick={submitCode}
             >
               Submit
             </button>

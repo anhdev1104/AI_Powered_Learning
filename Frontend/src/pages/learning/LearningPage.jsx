@@ -108,14 +108,13 @@ const LearningPage = () => {
           <Editor
             height="60vh"
             language={selectedLanguage}
-            defaultValue="// Enter code here"
             theme="vs-dark"
             value={value}
             onChange={value => setValue(value)}
             onMount={onMount}
           />
         </div>
-        <Output editorRef={editorRef} selectedLanguage={selectedLanguage} />
+        <Output editorRef={editorRef} selectedLanguage={selectedLanguage} exercise_id={question?.data?.id} />
       </div>
     </section>
   );
